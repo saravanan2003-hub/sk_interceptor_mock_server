@@ -1,12 +1,13 @@
 import uvicorn
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
+from fastapi import Body
 
 app = FastAPI()
 
 
 @app.post("/pre-signup")
-async def pre_signup():
+async def pre_signup(payload: dict = Body(default={})):
     return JSONResponse(
         status_code=200,
         content={
@@ -20,7 +21,7 @@ async def pre_signup():
 
 
 @app.post("/pre-session-creation")
-async def pre_session_creation():
+async def pre_session_creation(payload: dict = Body(default={})):
     return JSONResponse(
         status_code=200,
         content={
@@ -34,7 +35,7 @@ async def pre_session_creation():
 
 
 @app.post("/pre-user-invitation")
-async def pre_user_invitation():
+async def pre_user_invitation(payload: dict = Body(default={})):
     return JSONResponse(
         status_code=200,
         content={
@@ -48,7 +49,7 @@ async def pre_user_invitation():
 
 
 @app.post("/pre-m2m-token-creation")
-async def pre_m2m_token_creation():
+async def pre_m2m_token_creation(payload: dict = Body(default={})):
     return JSONResponse(
         status_code=200,
         content={
