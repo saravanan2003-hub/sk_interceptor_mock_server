@@ -13,7 +13,7 @@ async def pre_signup(payload: dict = Body(default={})):
         content={
             "decision": "ALLOW",
             "error": {
-                "code": 503,
+                "code": "503",
                 "message": "Signup not allowed"
             }
         }
@@ -27,7 +27,7 @@ async def pre_session_creation(payload: dict = Body(default={})):
         content={
             "decision": "ALLOW",
             "error": {
-                "code": 503,
+                "code": "503",
                 "message": "Session creation not allowed"
             }
         }
@@ -41,7 +41,7 @@ async def pre_user_invitation(payload: dict = Body(default={})):
         content={
             "decision": "ALLOW",
             "error": {
-                "code": 503,
+                "code": "503",
                 "message": "User invitation not allowed"
             }
         }
@@ -55,7 +55,7 @@ async def pre_m2m_token_creation(payload: dict = Body(default={})):
         content={
             "decision": "ALLOW",
             "error": {
-                "code": 503,
+                "code": "503",
                 "message": "M2M token creation not allowed"
             }
         }
