@@ -61,6 +61,10 @@ async def pre_m2m_token_creation(payload: dict = Body(default={})):
         }
     )
 
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
 
 if __name__ == "__main__":
     import uvicorn
