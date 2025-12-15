@@ -61,6 +61,29 @@ async def pre_m2m_token_creation(payload: dict = Body(default={})):
         }
     )
 
+@app.post("org-decision/pre-signup")
+async def session_stage_org_decision_pre_signup(payload: dict = Body(default={})):
+    return JSONResponse(
+        status_code=200,
+        content={
+            "decision": "ALLOW",
+            "error": {
+                "code": "200",
+                "message": "Signup was allowed, and the user was added to the organization.”"
+            },
+            "response": {
+                "create_organization_membership": {
+                    "external_organization_id":"ext_0987654321",
+                    "roles": [
+                        "admin",
+                        "member"
+                    ]
+                }
+            }
+        }
+    )
+
+
 @app.get("/health")
 def health():
     return {"status": "ok"}
