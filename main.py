@@ -62,7 +62,7 @@ async def pre_m2m_token_creation(payload: dict = Body(default={})):
     )
 
 @app.post("org-decision/pre-signup")
-async def session_stage_org_decision_pre_signup(payload: dict = Body(default={})):
+async def org_decision_pre_signup(payload: dict = Body(default={})):
     return JSONResponse(
         status_code=200,
         content={
