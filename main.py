@@ -84,7 +84,7 @@ async def org_decision_pre_signup(payload: dict = Body(default={})):
     )
 
 @app.get("/.well-known/oauth/client-metadata.json")
-async def org_decision_pre_signup(payload: dict = Body(default={})):
+async def mcp_cimd():
     return JSONResponse(
         status_code=200,
         content={
