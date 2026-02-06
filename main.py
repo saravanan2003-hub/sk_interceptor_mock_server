@@ -89,13 +89,14 @@ async def mcp_cimd():
         status_code=200,
         content={
             "client_id": "https://skinterceptormockserver-production.up.railway.app/.well-known/oauth/client-metadata.json",
-            "client_name": "MCPJam",
+            "client_name": "Scalekit Automation CIMD",
             "client_uri": "https://skinterceptormockserver-production.up.railway.app",
             "redirect_uris": [
                 "https://postman-echo.com/get",
                 "http://127.0.0.1:6274/oauth/callback",
                 "http://127.0.0.1:6274/callback",
-                "http://127.0.0.1:6274/oauth/callback/debug"
+                "http://127.0.0.1:6274/oauth/callback/debug",
+                "https://oauth.pstmn.io/v1/callback"
             ],
             "grant_types": [
                 "authorization_code",
