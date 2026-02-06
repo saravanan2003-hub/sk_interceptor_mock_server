@@ -88,27 +88,25 @@ async def mcp_cimd():
     return JSONResponse(
         status_code=200,
         content={
-            {
-                "client_id": "https://skinterceptormockserver-production.up.railway.app/.well-known/oauth/client-metadata.json",
-                "client_name": "MCPJam",
-                "client_uri": "https://skinterceptormockserver-production.up.railway.app",
-                "redirect_uris": [
-                    "https://postman-echo.com/get",
-                    "http://127.0.0.1:6274/oauth/callback",
-                    "http://127.0.0.1:6274/callback",
-                    "http://127.0.0.1:6274/oauth/callback/debug"
-                ],
-                "grant_types": [
-                    "authorization_code",
-                    "refresh_token",
-                    "urn:ietf:params:oauth:grant-type:device_code"
-                ],
-                "response_types": [
-                    "code"
-                ],
-                "token_endpoint_auth_method": "none",
-                "application_type": "native"
-            }
+            "client_id": "https://skinterceptormockserver-production.up.railway.app/.well-known/oauth/client-metadata.json",
+            "client_name": "MCPJam",
+            "client_uri": "https://skinterceptormockserver-production.up.railway.app",
+            "redirect_uris": [
+                "https://postman-echo.com/get",
+                "http://127.0.0.1:6274/oauth/callback",
+                "http://127.0.0.1:6274/callback",
+                "http://127.0.0.1:6274/oauth/callback/debug"
+            ],
+            "grant_types": [
+                "authorization_code",
+                "refresh_token",
+                "urn:ietf:params:oauth:grant-type:device_code"
+            ],
+            "response_types": [
+                "code"
+            ],
+            "token_endpoint_auth_method": "none",
+            "application_type": "native"
         }
     )
 
