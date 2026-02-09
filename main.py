@@ -111,6 +111,33 @@ async def mcp_cimd():
         }
     )
 
+@app.get("/render/.well-known/oauth/client-metadata.json")
+async def mcp_cimd_using_render():
+    return JSONResponse(
+        status_code=200,
+        content={
+            "client_id": "https://sk-interceptor-mock-server-7ntk.onrender.com//.well-known/oauth/client-metadata.json",
+            "client_name": "Scalekit Automation CIMD",
+            "client_uri": "https://sk-interceptor-mock-server-7ntk.onrender.com/",
+            "redirect_uris": [
+                "https://postman-echo.com/get",
+                "http://127.0.0.1:6274/oauth/callback",
+                "http://127.0.0.1:6274/callback",
+                "http://127.0.0.1:6274/oauth/callback/debug",
+                "https://oauth.pstmn.io/v1/callback"
+            ],
+            "grant_types": [
+                "authorization_code",
+                "refresh_token",
+                "urn:ietf:params:oauth:grant-type:device_code"
+            ],
+            "response_types": [
+                "code"
+            ],
+            "token_endpoint_auth_method": "none",
+            "application_type": "native"
+        }
+    )
 
 @app.get("/health")
 def health():
