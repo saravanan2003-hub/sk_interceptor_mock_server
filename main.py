@@ -116,9 +116,9 @@ async def mcp_cimd_using_render():
     return JSONResponse(
         status_code=200,
         content={
-            "client_id": "https://sk-interceptor-mock-server-7ntk.onrender.com//.well-known/oauth/client-metadata.json",
+            "client_id": "https://sk-interceptor-mock-server-7ntk.onrender.com/render/.well-known/oauth/client-metadata.json",
             "client_name": "Scalekit Automation CIMD",
-            "client_uri": "https://sk-interceptor-mock-server-7ntk.onrender.com/",
+            "client_uri": "https://sk-interceptor-mock-server-7ntk.onrender.com",
             "redirect_uris": [
                 "https://postman-echo.com/get",
                 "http://127.0.0.1:6274/oauth/callback",
