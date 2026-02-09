@@ -121,9 +121,6 @@ async def mcp_cimd_using_render():
             "client_uri": "https://sk-interceptor-mock-server-7ntk.onrender.com",
             "redirect_uris": [
                 "https://postman-echo.com/get",
-                "http://127.0.0.1:6274/oauth/callback",
-                "http://127.0.0.1:6274/callback",
-                "http://127.0.0.1:6274/oauth/callback/debug",
                 "https://oauth.pstmn.io/v1/callback"
             ],
             "grant_types": [
