@@ -136,6 +136,25 @@ async def mcp_cimd_using_render():
         }
     )
 
+@app.post("/pre-session-creation-with-cliams")
+async def pre_session_creation(payload: dict = Body(default={})):
+    return JSONResponse(
+        status_code=200,
+        content={
+            "decision": "ALLOW",
+            "error": {
+                "code": "503",
+                "message": "Session creation not allowed"
+            },
+            "response": {
+                "claims": {
+                    "dummy1": "value1",
+                    "dummy2": "value2"
+                }
+            }
+        }
+    )
+
 @app.get("/health")
 def health():
     return {"status": "ok"}
