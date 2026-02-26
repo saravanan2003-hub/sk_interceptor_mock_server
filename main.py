@@ -2,9 +2,11 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from fastapi import Body
+import json
 
 app = FastAPI()
 
+app.state.organization_details = None
 
 @app.post("/pre-signup")
 async def pre_signup(payload: dict = Body(default={})):
@@ -63,6 +65,9 @@ async def pre_m2m_token_creation(payload: dict = Body(default={})):
 
 @app.post("/org-decision/pre-signup")
 async def org_decision_pre_signup(payload: dict = Body(default={})):
+    with open("./organization_details.json", "r") as f:
+        data = json.load(f) 
+    
     return JSONResponse(
         status_code=200,
         content={
@@ -73,7 +78,7 @@ async def org_decision_pre_signup(payload: dict = Body(default={})):
             },
             "response": {
                 "create_organization_membership": {
-                    "external_organization_id":"ext_0987654321",
+                    "organization_id":data['organization_id'],
                     "roles": [
                         "admin",
                         "member"
@@ -136,8 +141,9 @@ async def mcp_cimd_using_render():
         }
     )
 
-@app.post("/pre-session-creation-with-cliams")
-async def pre_session_creation(payload: dict = Body(default={})):
+
+@app.post("/pre-session-creation-with-claims")
+async def pre_session_creation_claims(payload: dict = Body(default={})):
     return JSONResponse(
         status_code=200,
         content={
@@ -154,6 +160,16 @@ async def pre_session_creation(payload: dict = Body(default={})):
             }
         }
     )
+
+
+@app.post("/set-org-details-in-interceptor-server")
+def set_organization_details_in_interceptor(payload: dict):
+    with open("./organization_details.json", "w") as f:
+        json.dump(payload, f)
+    return {
+        "message": "Data stored successfully"
+    }
+
 
 @app.get("/health")
 def health():
