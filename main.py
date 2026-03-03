@@ -63,30 +63,52 @@ async def pre_m2m_token_creation(payload: dict = Body(default={})):
         }
     )
 
-@app.post("/org-decision/pre-signup_with_dynamic_response")
+@app.post("/org-decision/pre-signup-with-dynamic-response")
 async def org_decision_pre_signup_with_dynamic_response(payload: dict = Body(default={})):
     with open("./organization_details.json", "r") as f:
-        data = json.load(f) 
+        data = json.load(f)
     
-    return JSONResponse(
-        status_code=200,
-        content={
-            "decision": "ALLOW",
-            "error": {
-                "code": "200",
-                "message": "Signup was allowed, and the user was added to the organization.”"
-            },
-            "response": {
-                "create_organization_membership": {
-                    "organization_id":data['organization_id'],
-                    "roles": [
-                        "admin",
-                        "member"
-                    ]
+    if data['organization_id']:
+        return JSONResponse(
+            status_code=200,
+            content={
+                "decision": "ALLOW",
+                "error": {
+                    "code": "200",
+                    "message": "Signup was allowed, and the user was added to the organization.”"
+                },
+                "response": {
+                    "create_organization_membership": {
+                        "organization_id":data['organization_id'],
+                        "roles": [
+                            "admin",
+                            "member"
+                        ]
+                    }
                 }
             }
-        }
-    )
+        )
+    elif data['external_organization_id']:
+        return JSONResponse(
+            status_code=200,
+            content={
+                "decision": "ALLOW",
+                "error": {
+                    "code": "200",
+                    "message": "Signup was allowed, and the user was added to the organization.”"
+                },
+                "response": {
+                    "create_organization_membership": {
+                        "external_organization_id":data['external_organization_id'],
+                        "roles": [
+                            "admin",
+                            "member"
+                        ]
+                    }
+                }
+            }
+        )
+
 
 @app.post("/org-decision/pre-signup")
 async def org_decision_pre_signup(payload: dict = Body(default={})):
