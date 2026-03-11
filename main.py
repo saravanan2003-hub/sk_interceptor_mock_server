@@ -68,7 +68,7 @@ async def org_decision_pre_signup_with_dynamic_response(payload: dict = Body(def
     with open("./organization_details.json", "r") as f:
         data = json.load(f)
     
-    if data['organization_id']:
+    if data.get("organization_id"):
         return JSONResponse(
             status_code=200,
             content={
@@ -88,7 +88,7 @@ async def org_decision_pre_signup_with_dynamic_response(payload: dict = Body(def
                 }
             }
         )
-    elif data['external_organization_id']:
+    elif data.get("external_organization_id"):
         return JSONResponse(
             status_code=200,
             content={
@@ -109,6 +109,7 @@ async def org_decision_pre_signup_with_dynamic_response(payload: dict = Body(def
             }
         )
 
+    return None
 
 @app.post("/org-decision/pre-signup")
 async def org_decision_pre_signup(payload: dict = Body(default={})):
